@@ -32,9 +32,9 @@ export class ClientsRepository {
     clientId: string,
     clientUpdateDto: ClientUpdateDto,
   ): Promise<Client> {
-    const client = await this.clientModel.findById(clientId).exec();
-    Object.assign(client, clientUpdateDto);
-    return await client.save();
+    return await this.clientModel
+      .findByIdAndUpdate(clientId, clientUpdateDto, { new: true })
+      .exec();
   }
 
   async delete(clientId: string): Promise<Client> {
