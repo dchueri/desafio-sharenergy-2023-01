@@ -1,7 +1,7 @@
 export interface IClient extends Document {
   name: string;
   email: string;
-  phone: number;
+  phone: string;
   address: string;
-  cpf: number;
+  cpf: string;
 }

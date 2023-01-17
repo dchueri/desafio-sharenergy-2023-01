@@ -24,8 +24,9 @@ export class ClientsController {
 
   @Post()
   @HttpCode(201)
-  async create(@Body() clienCreateData: ClientCreateDto) {
-    return this.clientsService.create(clienCreateData);
+  async create(@Body() clientCreateData: ClientCreateDto) {
+    const client = await this.clientsService.create(clientCreateData);
+    return client;
   }
 
   @Patch(':id')
