@@ -19,13 +19,13 @@ export class ClientsController {
   @Get()
   @HttpCode(200)
   async getAll() {
-    return 'service.getAllClients()';
+    return this.clientsService.getAll();
   }
 
   @Post()
   @HttpCode(201)
   async create(@Body() clienCreateData: ClientCreateDto) {
-    return 'service.createClient(clienCreateData)';
+    return this.clientsService.create(clienCreateData);
   }
 
   @Patch(':id')
@@ -34,12 +34,12 @@ export class ClientsController {
     @Param('id') clientId: number,
     @Body() clientUpdateData: ClientUpdateDto,
   ) {
-    return 'service.updateClient(clienUpdateData)';
+    return this.clientsService.update(clientId, clientUpdateData);
   }
 
   @Delete(':id')
   @HttpCode(204)
   async delete(@Param('id') clientId: number) {
-    return `service.deleteClient(${clientId})`;
+    return this.clientsService.delete(clientId);
   }
 }
