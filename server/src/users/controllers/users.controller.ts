@@ -13,13 +13,12 @@ import { UserCreateDto } from '../dto/user-create.dto';
 import { UserUpdateDto } from '../dto/user-update.dto';
 import UsernameAlreadyRegisteredException from '../exceptions/username-already-registered.exception';
 import { User } from '../schema/user.schema';
-import { UserService } from '../service/user.service';
+import { UserService } from '../services/user.service';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly userService: UserService) {}
 
-  @IsPublic()
   @Get()
   @HttpCode(200)
   async getAll(): Promise<User[]> {

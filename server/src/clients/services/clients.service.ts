@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { ClientsRepository } from './clients.repository';
-import { ClientCreateDto } from './dto/client-create.dto';
-import { ClientUpdateDto } from './dto/client-update.dto';
-import { Client } from './schema/client.schema';
+import { ClientCreateDto } from '../dto/client-create.dto';
+import { ClientUpdateDto } from '../dto/client-update.dto';
+import { ClientsRepository } from '../repositories/clients.repository';
+import { Client } from '../schema/client.schema';
 
 @Injectable()
 export class ClientsService {

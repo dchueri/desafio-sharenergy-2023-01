@@ -5,14 +5,14 @@ import {
 } from '@nestjs/common';
 import { validate } from 'class-validator';
 import { NextFunction, Request, Response } from 'express';
-import { LoginRequestBody } from '../dto/login-request.dto';
+import { LoginRequestDto } from '../dto/login-request.dto';
 
 @Injectable()
 export class LoginValidationMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
     const body = req.body;
 
-    const loginRequestBody = new LoginRequestBody();
+    const loginRequestBody = new LoginRequestDto();
     loginRequestBody.username = body.username;
     loginRequestBody.password = body.password;
 

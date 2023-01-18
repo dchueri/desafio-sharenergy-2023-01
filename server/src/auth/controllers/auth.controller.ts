@@ -6,9 +6,9 @@ import {
   NotFoundException,
   Post,
 } from '@nestjs/common';
-import { IsPublic } from './decorators/is-public.decorator';
-import { AuthRequest } from './requests/auth.request';
-import { AuthService } from './services/auth.service';
+import { IsPublic } from '../decorators/is-public.decorator';
+import { AuthRequest } from '../requests/auth.request';
+import { AuthService } from '../services/auth.service';
 
 @Controller('auth')
 export class AuthController {

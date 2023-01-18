@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { User } from 'src/users/schema/user.schema';
-import { UserService } from '../../users/service/user.service';
+import { UserService } from '../../users/services/user.service';
 import { UserPayload } from '../dto/user-payload.dto';
 import { UserToken } from '../dto/user-token-dto';
 import { IAuthService } from '../interfaces/auth-service.interface';
@@ -28,7 +28,9 @@ export class AuthService implements IAuthService {
         };
       }
     }
-    throw new Error('username or password provided is incorrect');
+    throw new UnprocessableEntityException(
+      'username or password provided is incorrect',
+    );
   }
 
   async hashPassword(password: string): Promise<string> {
@@ -48,10 +50,12 @@ export class AuthService implements IAuthService {
     return true;
   }
 
-  login(user: User): UserToken {
+  async login(user: User): Promise<UserToken> {
     const payload: UserPayload = {
       username: user.username,
     };
+
+    await this.validateUser(user.username, user.password);
 
     const jwtToken = this.jwtService.sign(payload, {
       secret: process.env.JWT_SECRET,

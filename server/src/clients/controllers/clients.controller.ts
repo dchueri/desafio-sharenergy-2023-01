@@ -10,10 +10,10 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { ErrorsInterceptor } from 'src/errors/errors.interceptor';
-import { ClientsService } from './clients.service';
-import { ClientCreateDto } from './dto/client-create.dto';
-import { ClientUpdateDto } from './dto/client-update.dto';
-import { Client } from './schema/client.schema';
+import { ClientCreateDto } from '../dto/client-create.dto';
+import { ClientUpdateDto } from '../dto/client-update.dto';
+import { Client } from '../schema/client.schema';
+import { ClientsService } from '../services/clients.service';
 
 @UseInterceptors(ErrorsInterceptor)
 @Controller('clients')
