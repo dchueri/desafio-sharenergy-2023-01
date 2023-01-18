@@ -44,7 +44,7 @@ export class UserService {
       username: 'desafiosharenergy',
       password: 'sh@r3n3rgy',
     };
-    const user = await this.findByUsername('default');
+    const user = await this.findByUsername(defaultUser.username);
     if (!user) {
       await this.createUser(defaultUser);
       console.log('user desafiosharenergy successfully created');

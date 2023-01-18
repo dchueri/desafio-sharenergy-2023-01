@@ -1,0 +1,10 @@
+{
+  "name": "sharenergy-challenge",
+  "author": "Diego Chueri Aragão",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {},
+  "license": "MIT"
+}
