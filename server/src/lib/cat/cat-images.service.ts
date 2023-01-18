@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class CatService {
+export class CatImagesService {
   private readonly url = 'https://http.cat/';
 
   getImage(statusCode: number): Observable<any> {

@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CatService } from './cat/cat.service';
+import { CatImagesService } from './cat/cat-images.service';
+import { DogImagesService } from './dog/dog-images.service';
 import { ExternalsApiController } from './externals-api.controller';
 
 @Module({
   controllers: [ExternalsApiController],
-  providers: [CatService],
+  providers: [CatImagesService, DogImagesService],
 })
 export class ExternalsApiModule {}
