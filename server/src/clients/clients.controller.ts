@@ -13,6 +13,7 @@ import { ErrorsInterceptor } from 'src/errors/errors.interceptor';
 import { ClientsService } from './clients.service';
 import { ClientCreateDto } from './dto/client-create.dto';
 import { ClientUpdateDto } from './dto/client-update.dto';
+import { Client } from './schema/client.schema';
 
 @UseInterceptors(ErrorsInterceptor)
 @Controller('clients')
@@ -21,13 +22,19 @@ export class ClientsController {
 
   @Get()
   @HttpCode(200)
-  async getAll() {
-    return this.clientsService.getAll();
+  async getAll(): Promise<Client[]> {
+    return await this.clientsService.getAll();
+  }
+
+  @Get(':id')
+  @HttpCode(200)
+  async getOneById(@Param('id') clientId: string): Promise<Client> {
+    return await this.clientsService.getOne(clientId);
   }
 
   @Post()
   @HttpCode(201)
-  async create(@Body() clientCreateData: ClientCreateDto) {
+  async create(@Body() clientCreateData: ClientCreateDto): Promise<Client> {
     const client = await this.clientsService.create(clientCreateData);
     return client;
   }
@@ -37,13 +44,13 @@ export class ClientsController {
   async update(
     @Param('id') clientId: string,
     @Body() clientUpdateData: ClientUpdateDto,
-  ) {
-    return this.clientsService.update(clientId, clientUpdateData);
+  ): Promise<Client> {
+    return await this.clientsService.update(clientId, clientUpdateData);
   }
 
   @Delete(':id')
   @HttpCode(204)
-  async delete(@Param('id') clientId: string) {
-    return this.clientsService.delete(clientId);
+  async delete(@Param('id') clientId: string): Promise<void> {
+    return await this.clientsService.delete(clientId);
   }
 }

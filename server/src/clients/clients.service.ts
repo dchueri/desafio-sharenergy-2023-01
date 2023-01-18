@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Client } from './client.model';
 import { ClientsRepository } from './clients.repository';
 import { ClientCreateDto } from './dto/client-create.dto';
 import { ClientUpdateDto } from './dto/client-update.dto';
+import { Client } from './schema/client.schema';
 
 @Injectable()
 export class ClientsService {
@@ -16,15 +16,18 @@ export class ClientsService {
     return await this.clientsRepository.findOneById(clientId);
   }
 
-  async create(clientCreateData: ClientCreateDto) {
+  async create(clientCreateData: ClientCreateDto): Promise<Client> {
     return await this.clientsRepository.create(clientCreateData);
   }
 
-  async update(clientId: string, clientUpdateData: ClientUpdateDto) {
+  async update(
+    clientId: string,
+    clientUpdateData: ClientUpdateDto,
+  ): Promise<Client> {
     return await this.clientsRepository.update(clientId, clientUpdateData);
   }
 
-  async delete(clientId: string) {
-    return await this.clientsRepository.delete(clientId);
+  async delete(clientId: string): Promise<void> {
+    await this.clientsRepository.delete(clientId);
   }
 }
