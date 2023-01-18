@@ -38,4 +38,18 @@ export class UserService {
   async findOne(id: string): Promise<User> {
     return await this.usersRepository.findOneById(id);
   }
+
+  async generateDefaultUser(): Promise<void> {
+    const defaultUser = {
+      username: 'desafiosharenergy',
+      password: 'sh@r3n3rgy',
+    };
+    const user = await this.findByUsername('default');
+    if (!user) {
+      await this.createUser(defaultUser);
+      console.log('user desafiosharenergy successfully created');
+      return;
+    }
+    console.log('user desafiosharenergy already exists');
+  }
 }
