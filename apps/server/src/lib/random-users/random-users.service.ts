@@ -6,10 +6,15 @@ import { UserRandom } from '../interfaces/user-random.interface';
 export class UsersRandomService {
   private readonly url = 'https://randomuser.me/api/';
 
-  async getUsers(usersQuantity: number): Promise<UserRandom> {
+  async getUsers(
+    pageNumber: number,
+    numberOfResultsPerPage: number,
+  ): Promise<UserRandom> {
     const response = await axios.get(this.url, {
       params: {
-        results: usersQuantity,
+        page: pageNumber,
+        results: numberOfResultsPerPage,
+        seed: 'abc',
       },
     });
     const modifiedUsers = response.data.results.map((user): UserRandom => {

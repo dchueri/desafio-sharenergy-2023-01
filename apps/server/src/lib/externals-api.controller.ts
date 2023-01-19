@@ -1,8 +1,10 @@
-import { Controller, Get, HttpCode, Param } from '@nestjs/common';
+import { Controller, Get, HttpCode, Param, Query } from '@nestjs/common';
 import { Observable } from 'rxjs';
+import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 import { CatImagesService } from './cat/cat-images.service';
 import { DogImagesService } from './dog/dog-images.service';
 import { UserRandom } from './interfaces/user-random.interface';
+import { RandomUsersDto } from './random-users.dto';
 import { UsersRandomService } from './random-users/random-users.service';
 
 @Controller('externals')
@@ -27,11 +29,13 @@ export class ExternalsApiController {
     return await this.dogService.getRandomImage();
   }
 
-  @Get('random-users/:usersQtd')
+  @IsPublic()
+  @Get('random-users')
   @HttpCode(200)
-  async getRandomUsers(
-    @Param('usersQtd') usersQuantity: number,
-  ): Promise<UserRandom> {
-    return await this.usersService.getUsers(usersQuantity);
+  async getRandomUsers(@Query() query: RandomUsersDto): Promise<UserRandom> {
+    return await this.usersService.getUsers(
+      query.pageNumber,
+      query.numberOfResultsPerPage,
+    );
   }
 }
