@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .title {
+    @apply text-[#161C2D] text-4xl font-bold;
+  }
+
   .tableHead {
     @apply px-6 align-middle py-2 text-sm max-[660px]:px-2 max-[480px]:px-1 max-[660px]:text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-[#00A2A2] text-[#fff];
   }

@@ -39,6 +39,7 @@ export class UsersRandomService {
       params: {
         results: 1000,
         seed: 'abc',
+        nat: 'br',
       },
     });
 
