@@ -32,8 +32,8 @@ export class ExternalsApiController {
   @IsPublic()
   @Get('random-users')
   @HttpCode(200)
-  async getRandomUsers(@Query() query: RandomUsersDto): Promise<UserRandom> {
-    return await this.usersService.getUsers(
+  async getRandomUsers(@Query() query: RandomUsersDto): Promise<UserRandom[]> {
+    return await this.usersService.getUsersList(
       query.pageNumber,
       query.numberOfResultsPerPage,
     );

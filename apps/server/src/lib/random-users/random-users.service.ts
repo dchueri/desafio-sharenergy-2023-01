@@ -6,10 +6,23 @@ import { UserRandom } from '../interfaces/user-random.interface';
 export class UsersRandomService {
   private readonly url = 'https://randomuser.me/api/';
 
-  async getUsers(
+  async getUsersList(pageNumber: number, numberOfResultsPerPage: number) {
+    let usersList;
+    let parsedUserList;
+    if (pageNumber || numberOfResultsPerPage) {
+      usersList = await this.findUsers(pageNumber, numberOfResultsPerPage);
+      parsedUserList = this.parseUserList(usersList);
+      return parsedUserList;
+    }
+    usersList = await this.findUsersList();
+    parsedUserList = this.parseUserList(usersList);
+    return parsedUserList;
+  }
+
+  async findUsers(
     pageNumber: number,
     numberOfResultsPerPage: number,
-  ): Promise<UserRandom> {
+  ): Promise<Array<any>> {
     const response = await axios.get(this.url, {
       params: {
         page: pageNumber,
@@ -17,7 +30,23 @@ export class UsersRandomService {
         seed: 'abc',
       },
     });
-    const modifiedUsers = response.data.results.map((user): UserRandom => {
+
+    return response.data.results;
+  }
+
+  async findUsersList(): Promise<Array<any>> {
+    const response = await axios.get(this.url, {
+      params: {
+        results: 1000,
+        seed: 'abc',
+      },
+    });
+
+    return response.data.results;
+  }
+
+  parseUserList(userList: UserRandom[]) {
+    const parsedUserList = userList.map((user: any): UserRandom => {
       return {
         picture: user.picture.large,
         fullName: `${user.name.first} ${user.name.last}`,
@@ -26,6 +55,6 @@ export class UsersRandomService {
         age: user.dob.age,
       };
     });
-    return modifiedUsers;
+    return parsedUserList;
   }
 }
