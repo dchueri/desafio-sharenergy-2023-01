@@ -23,13 +23,14 @@ export class ExternalsApiController {
     return this.catService.getImage(httpCode);
   }
 
+  @IsPublic()
   @Get('dog')
   @HttpCode(200)
-  async getDogImage(): Promise<string> {
-    return await this.dogService.getRandomImage();
+  async getDogImage(): Promise<{ data: string }> {
+    const dogImage = await this.dogService.getRandomImage();
+    return { data: dogImage };
   }
 
-  @IsPublic()
   @Get('random-users')
   @HttpCode(200)
   async getRandomUsers(@Query() query: RandomUsersDto): Promise<UserRandom[]> {

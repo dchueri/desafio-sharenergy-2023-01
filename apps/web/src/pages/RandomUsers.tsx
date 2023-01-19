@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import RandomUsersTable from "../../components/RandomUsers/RandomUsersTable";
-import { SearchBar } from "../../components/RandomUsers/SearchBar";
-import { IUser } from "../../interfaces/IUser";
-import { RandomUsersService } from "../../utils/services/RandomUsersService";
+import RandomUsersTable from "../components/RandomUsers/RandomUsersTable";
+import { SearchBar } from "../components/RandomUsers/SearchBar";
+import { IUser } from "../interfaces/IUser";
+import { RandomUsersService } from "../utils/services/RandomUsersService";
 
 const RandomUsers = () => {
   const usersPerPage = 5;
@@ -52,8 +52,8 @@ const RandomUsers = () => {
         nextLabel=">"
         className="flex"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
+        pageRangeDisplayed={2}
+        marginPagesDisplayed={1}
         pageCount={pageCount}
         previousLabel="<"
         pageClassName="flex flex-row w-[50%]"
