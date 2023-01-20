@@ -2,17 +2,30 @@ import React from "react";
 
 const Button = ({
   onClick,
-  value,
+  children,
+  color: variant,
+  disabled = false,
 }: {
   onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  value: string;
+  children: any;
+  color: string;
+  disabled: boolean;
 }) => {
   return (
     <button
       onClick={onClick}
-      className="bg-secondary p-3 rounded-md text-[#fff] font-bold"
+      className={
+        disabled
+          ? "bg-[#c7c7c7] p-3 rounded-md text-[#fff] font-bold duration-300"
+          : `${
+              variant == "error"
+                ? `bg-error hover:text-error hover:ring-error`
+                : "bg-secondary hover:text-secondary"
+            } p-3 rounded-md text-[#fff] font-bold hover:bg-[#fff] hover:ring-1 duration-300`
+      }
+      disabled={disabled}
     >
-      {value}
+      {children}
     </button>
   );
 };

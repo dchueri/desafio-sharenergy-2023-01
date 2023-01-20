@@ -51,7 +51,7 @@ const RandomUsers = () => {
           value={searchValue}
           setValue={setSearchValue}
           placeholder={"Busque um usuário..."}
-          type={null}
+          type={"text"}
         />
         <RandomUsersTable users={currentUsersList} />
         <ReactPaginate

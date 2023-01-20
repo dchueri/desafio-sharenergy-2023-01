@@ -30,7 +30,7 @@ const RandomCats = () => {
             placeholder={"Digite um código..."}
             type={"number"}
           />
-          <Button onClick={handleSearchImage} value="Gerar imagem" />
+          <Button onClick={handleSearchImage}>Gerar imagem</Button>
         </div>
         <img
           src={catImage}

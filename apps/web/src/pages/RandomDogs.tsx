@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../components/Elements/Button";
 import { RandomDogsService } from "../utils/services/RandomDogsService";
 
 const RandomDogs = () => {
@@ -15,8 +16,16 @@ const RandomDogs = () => {
 
   return (
     <div>
-      <img src={image} />
-      <button onClick={handleClick}>Procurar imagem</button>
+      <h1 className="title">Imagem de cachorros</h1>
+      <div className="pageContent">
+        <Button onClick={handleClick}>Gerar imagem</Button>
+        <div className="h-[60vh] justify-center">
+          <img
+            src={image}
+            className={`max-h-[500px] max-w-[90%] object-contain rounded-lg shadow-md mx-auto`}
+          />
+        </div>
+      </div>
     </div>
   );
 };

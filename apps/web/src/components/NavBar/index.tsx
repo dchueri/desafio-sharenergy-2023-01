@@ -16,6 +16,7 @@ const pages = [
   { name: "Usuários", route: "/" },
   { name: "HTTP Gatos", route: "/random-cats" },
   { name: "Cachorro Imgs", route: "/random-dogs" },
+  { name: "Clientes", route: "/clients" },
 ];
 
 export const NavBar = () => {

@@ -22,7 +22,7 @@ export class ExternalsApiController {
   ): Promise<Observable<any>> {
     return this.catService.getImage(httpCode);
   }
-
+  @IsPublic()
   @Get('dog')
   @HttpCode(200)
   async getDogImage(): Promise<{ data: string }> {
