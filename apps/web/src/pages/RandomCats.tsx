@@ -11,7 +11,6 @@ const RandomCats = () => {
       const imageRequest = await RandomCatsService.getCatImage(
         parseInt(inputCode)
       );
-      console.log(imageRequest);
       if (imageRequest != catImage) {
         setCatImage(imageRequest);
       }

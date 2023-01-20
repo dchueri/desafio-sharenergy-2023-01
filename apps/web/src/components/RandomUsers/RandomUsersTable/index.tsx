@@ -3,8 +3,8 @@ import { IUser } from "../../../interfaces/IUser";
 const RandomUsersTable = ({ users }: { users: IUser[] }) => {
   return (
     <div className="w-fit shadow-lg min-w-[450px] mx-auto rounded-xl">
-      <table className="block w-full overflow-x-auto rounded-xl">
-        <thead className="bg-[#00A2A2] text-[#fff] border-cyan-700">
+      <table className="block overflow-x-auto rounded-xl">
+        <thead className="p-1 bg-secondary text-[#fff] border-cyan-700">
           <tr>
             <th className="tableHead"></th>
             <th className="tableHead">Nome</th>

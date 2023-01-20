@@ -2,13 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Roboto";
+}
+
 @layer components {
   .title {
-    @apply text-[#161C2D] text-4xl font-bold;
+    @apply text-primary text-5xl font-bold text-center h-[15vh] flex justify-center items-center cursor-default;
+  }
+
+  .pageContent {
+    @apply flex flex-col items-center gap-16 h-[75vh] justify-center;
+  }
+
+  .input {
+    @apply outline-none text-primary w-[50%] max-w-[600px] mx-auto border-solid border-[#7A7A7A] border-opacity-50 border-[1px] rounded-[10px] px-3 py-2;
   }
 
   .tableHead {
-    @apply px-6 align-middle py-2 text-sm max-[660px]:px-2 max-[480px]:px-1 max-[660px]:text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-[#00A2A2] text-[#fff];
+    @apply px-6 align-middle py-2 text-sm max-[660px]:px-2 max-[480px]:px-1 max-[660px]:text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-secondary text-[#fff];
   }
 
   .tableRow {
