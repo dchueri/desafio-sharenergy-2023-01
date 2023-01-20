@@ -1,13 +1,12 @@
-import axios from "axios";
 import { IUser } from "../../interfaces/IUser";
-import { ApiConnection } from "../ApiConnection";
+import { api } from "../api";
 
-export class RandomUsersService extends ApiConnection {
+export class RandomUsersService {
   public static async getUsers(
     pageNumber: number,
     resultsNumberPerPage: number
   ): Promise<IUser[]> {
-    const { data } = await axios.get(this.apiUrl + "externals/random-users", {
+    const { data } = await api.get("externals/random-users", {
       params: {
         pageNumber: pageNumber,
         numberOfResultsPerPage: resultsNumberPerPage,
@@ -18,7 +17,7 @@ export class RandomUsersService extends ApiConnection {
   }
 
   public static async getUsersList(): Promise<IUser[]> {
-    const { data } = await axios.get(this.apiUrl + "externals/random-users");
+    const { data } = await api.get("externals/random-users");
 
     return data;
   }

@@ -1,15 +1,14 @@
-import axios from "axios";
 import { IClientCreate } from "../../interfaces/IClientCreate";
-import { ApiConnection } from "../ApiConnection";
+import { api } from "../api";
 
-export class ClientsService extends ApiConnection {
+export class ClientsService {
   public static async getAllClients(): Promise<any> {
-    const { data } = await axios.get(this.apiUrl + "clients");
+    const { data } = await api.get("clients");
     return data;
   }
 
   public static async createClient(client: IClientCreate): Promise<any> {
-    const { data } = await axios.post(this.apiUrl + "clients", client);
+    const { data } = await api.post("clients", client);
     return data;
   }
 
@@ -21,15 +20,12 @@ export class ClientsService extends ApiConnection {
     clientFields.map((field: string) =>
       client[field] == "" ? delete client[field] : null
     );
-    const { data } = await axios.patch(
-      this.apiUrl + "clients/" + clientID,
-      client
-    );
+    const { data } = await api.patch(+"clients/" + clientID, client);
     return data;
   }
 
   public static async deleteClient(id: string): Promise<any> {
-    const { data } = await axios.delete(this.apiUrl + "clients/" + id);
+    const { data } = await api.delete("clients/" + id);
     return data;
   }
 }

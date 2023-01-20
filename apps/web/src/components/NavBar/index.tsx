@@ -11,6 +11,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthProvider/useAuth";
 
 const pages = [
   { name: "Usuários", route: "/" },
@@ -20,6 +21,7 @@ const pages = [
 ];
 
 export const NavBar = () => {
+  const auth = useAuth();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -31,6 +33,11 @@ export const NavBar = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleLogout = () => {
+    auth.logout();
+    navigate("/login");
   };
 
   return (
@@ -156,6 +163,7 @@ export const NavBar = () => {
                   cursor: "pointer",
                 },
               }}
+              onClick={handleLogout}
             />
           </Box>
         </Toolbar>

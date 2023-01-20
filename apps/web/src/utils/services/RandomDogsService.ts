@@ -1,9 +1,8 @@
-import axios from "axios";
-import { ApiConnection } from "../ApiConnection";
+import { api } from "../api";
 
-export class RandomDogsService extends ApiConnection {
+export class RandomDogsService {
   public static async getDog(): Promise<{ data: string }> {
-    const { data } = await axios.get(this.apiUrl + "externals/dog");
+    const { data } = await api.get("externals/dog");
 
     return data;
   }

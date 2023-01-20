@@ -7,7 +7,6 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 import { CurrentUser } from '../decorators/current-user.decorator';
 import { UserCreateDto } from '../dto/user-create.dto';
 import { UserUpdateDto } from '../dto/user-update.dto';
@@ -30,7 +29,6 @@ export class UsersController {
     return user;
   }
 
-  @IsPublic()
   @Post()
   async create(@Body() userToCreate: UserCreateDto): Promise<User> {
     try {

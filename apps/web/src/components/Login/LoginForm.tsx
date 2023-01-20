@@ -5,17 +5,36 @@ import CssBaseline from "@mui/material/CssBaseline";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthProvider/useAuth";
 import Button from "../Elements/Button";
 
 export const LoginForm = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-      remember: data.get("remember"),
-    });
+    const username = data.get("username")!.toString();
+    const password = data.get("password")!.toString();
+    const checkedRemember = data.get("remember")!;
+    let remember: boolean;
+    checkedRemember ? (remember = true) : (remember = false);
+    await login(username, password, remember);
+  };
+
+  const login = async (
+    username: string,
+    password: string,
+    remember: boolean
+  ) => {
+    try {
+      await auth.authenticate(username, password, remember);
+      navigate("/");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -34,10 +53,10 @@ export const LoginForm = () => {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="username"
             label="Username"
-            name="email"
-            autoComplete="email"
+            name="username"
+            autoComplete="username"
             autoFocus
           />
           <TextField
