@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import Input from "../components/Elements/Input";
 import RandomUsersTable from "../components/RandomUsers/RandomUsersTable";
-import { SearchBar } from "../components/RandomUsers/SearchBar";
 import { IUser } from "../interfaces/IUser";
 import { RandomUsersService } from "../utils/services/RandomUsersService";
 
@@ -47,7 +47,12 @@ const RandomUsers = () => {
     <div className="">
       <h1 className="title">Lista de Usuários</h1>
       <div className="pageContent">
-        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Input
+          value={searchValue}
+          setValue={setSearchValue}
+          placeholder={"Busque um usuário..."}
+          type={null}
+        />
         <RandomUsersTable users={currentUsersList} />
         <ReactPaginate
           nextLabel=">"

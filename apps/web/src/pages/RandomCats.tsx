@@ -1,4 +1,6 @@
 import { FormEvent, useState } from "react";
+import Button from "../components/Elements/Button";
+import Input from "../components/Elements/Input";
 import { RandomCatsService } from "../utils/services/RandomCatsService";
 
 const RandomCats = () => {
@@ -19,13 +21,22 @@ const RandomCats = () => {
 
   return (
     <div>
-      <h1 className="title">RandomCats</h1>
-      <input type={"number"} onChange={(e) => setInputCode(e.target.value)} />
-      <button onClick={handleSearchImage}>Gerar Imagem</button>
-      <img
-        src={catImage}
-        className={`max-h-[400px] max-w-[90%] object-contain mt-4 rounded-lg shadow-md `}
-      />
+      <h1 className="title">Gatos HTTP</h1>
+      <div className="pageContent">
+        <div className="flex">
+          <Input
+            value={inputCode}
+            setValue={setInputCode}
+            placeholder={"Digite um código..."}
+            type={"number"}
+          />
+          <Button onClick={handleSearchImage} value="Gerar imagem" />
+        </div>
+        <img
+          src={catImage}
+          className={`max-h-[500px] max-w-[90%] object-contain mt-4 rounded-lg shadow-md `}
+        />
+      </div>
     </div>
   );
 };

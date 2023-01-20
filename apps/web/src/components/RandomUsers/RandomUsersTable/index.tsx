@@ -1,3 +1,4 @@
+import { Skeleton } from "@mui/material";
 import { IUser } from "../../../interfaces/IUser";
 
 const RandomUsersTable = ({ users }: { users: IUser[] }) => {
@@ -6,7 +7,7 @@ const RandomUsersTable = ({ users }: { users: IUser[] }) => {
       <table className="block overflow-x-auto rounded-xl">
         <thead className="p-1 bg-secondary text-[#fff] border-cyan-700">
           <tr>
-            <th className="tableHead"></th>
+            <th className="tableHead min-w-min"></th>
             <th className="tableHead">Nome</th>
             <th className="tableHead">E-mail</th>
             <th className="tableHead">Username</th>
@@ -40,6 +41,12 @@ const RandomUsersTable = ({ users }: { users: IUser[] }) => {
             }
           )}
         </tbody>
+        {users.length == 0 ? (
+          <Skeleton
+            variant="rectangular"
+            sx={{ width: "full", height: "15vh" }}
+          />
+        ) : null}
       </table>
     </div>
   );

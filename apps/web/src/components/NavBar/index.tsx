@@ -10,31 +10,26 @@ import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
-const pages = ["Usuários", "HTTP Gatos", "Cachorro Imgs"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = [
+  { name: "Usuários", route: "/" },
+  { name: "HTTP Gatos", route: "/random-cats" },
+  { name: "Cachorro Imgs", route: "/random-dogs" },
+];
 
 export const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
@@ -45,6 +40,12 @@ export const NavBar = () => {
         color: "black",
         boxShadow: "none",
         height: "10vh",
+        width: "100%",
+        maxWidth: "70vw",
+        display: "flex",
+        justifyContent: "center",
+        justifySelf: "center",
+        margin: "0 auto",
       }}
     >
       <Container maxWidth="xl">
@@ -83,7 +84,7 @@ export const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.name} onClick={() => navigate(page.route)}>
                   <Typography
                     textAlign="center"
                     sx={{
@@ -95,36 +96,40 @@ export const NavBar = () => {
                       },
                     }}
                   >
-                    {page}
+                    {page.name}
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <img src="/logo.png" className="w-[20%] mx-auto" />
+          <img src="/logo.png" className="w-[15%] mx-auto" />
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               justifyContent: "flex-end",
+              gap: "2em",
+              padding: "0 2em",
             }}
           >
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.name}
+                onClick={() => navigate(page.route)}
                 sx={{
                   my: 2,
                   display: "block",
                   color: "#161C2D",
                   fontWeight: "bold",
+                  textTransform: "initial",
+                  fontSize: "16px",
                   "&:hover": {
                     color: "#00A2A2",
                     backgroundColor: "transparent",
                   },
                 }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
@@ -139,13 +144,18 @@ export const NavBar = () => {
               display: "flex",
               justifyContent: "center",
               verticalAlign: "center",
-              "&:hover": {
-                color: "#00A2A2",
-                cursor: "pointer",
-              },
+              paddingLeft: "2em",
+              alignItems: "center",
             }}
           >
-            <Logout />
+            <Logout
+              sx={{
+                "&:hover": {
+                  color: "#00A2A2",
+                  cursor: "pointer",
+                },
+              }}
+            />
           </Box>
         </Toolbar>
       </Container>

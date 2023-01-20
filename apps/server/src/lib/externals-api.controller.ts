@@ -1,6 +1,6 @@
 import { Controller, Get, HttpCode, Param, Query } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { IsPublic } from 'src/auth/decorators/is-public.decorator';
+import { IsPublic } from '../auth/decorators/is-public.decorator';
 import { CatImagesService } from './cat/cat-images.service';
 import { DogImagesService } from './dog/dog-images.service';
 import { UserRandom } from './interfaces/user-random.interface';
@@ -23,7 +23,6 @@ export class ExternalsApiController {
     return this.catService.getImage(httpCode);
   }
 
-  @IsPublic()
   @Get('dog')
   @HttpCode(200)
   async getDogImage(): Promise<{ data: string }> {
@@ -31,6 +30,7 @@ export class ExternalsApiController {
     return { data: dogImage };
   }
 
+  @IsPublic()
   @Get('random-users')
   @HttpCode(200)
   async getRandomUsers(@Query() query: RandomUsersDto): Promise<UserRandom[]> {
