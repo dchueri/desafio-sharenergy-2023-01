@@ -61,14 +61,14 @@ const ClientsTable = ({
                   <td className="tableRow flex gap-3">
                     <Button
                       onClick={handleOpenUpdateModal}
-                      color={""}
+                      variant={""}
                       disabled={false}
                     >
                       <EditIcon sx={{ width: "15px", height: "15px" }} />
                     </Button>
                     <Button
                       onClick={() => handleDeleteClient(_id)}
-                      color={"error"}
+                      variant={"error"}
                       disabled={false}
                     >
                       <DeleteForeverIcon

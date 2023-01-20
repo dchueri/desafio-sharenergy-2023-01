@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../components/Elements/Button";
+import { NavBar } from "../components/NavBar";
 import { RandomDogsService } from "../utils/services/RandomDogsService";
 
 const RandomDogs = () => {
@@ -16,9 +17,12 @@ const RandomDogs = () => {
 
   return (
     <div>
+      <NavBar />
       <h1 className="title">Imagem de cachorros</h1>
       <div className="pageContent">
-        <Button onClick={handleClick}>Gerar imagem</Button>
+        <Button onClick={handleClick} variant={""} disabled={false}>
+          Gerar imagem
+        </Button>
         <div className="h-[60vh] justify-center">
           <img
             src={image}

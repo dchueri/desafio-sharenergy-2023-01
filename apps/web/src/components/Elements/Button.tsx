@@ -3,13 +3,15 @@ import React from "react";
 const Button = ({
   onClick,
   children,
-  color: variant,
+  variant: variant,
   disabled = false,
+  className,
 }: {
   onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
   children: any;
-  color: string;
+  variant: string;
   disabled: boolean;
+  className: string;
 }) => {
   return (
     <button
@@ -21,7 +23,7 @@ const Button = ({
               variant == "error"
                 ? `bg-error hover:text-error hover:ring-error`
                 : "bg-secondary hover:text-secondary"
-            } p-3 rounded-md text-[#fff] font-bold hover:bg-[#fff] hover:ring-1 duration-300`
+            } p-3 rounded-md text-[#fff] font-bold hover:bg-[#fff] hover:ring-1 duration-300 ${className}`
       }
       disabled={disabled}
     >

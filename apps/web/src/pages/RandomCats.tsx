@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import Button from "../components/Elements/Button";
 import Input from "../components/Elements/Input";
+import { NavBar } from "../components/NavBar";
 import { RandomCatsService } from "../utils/services/RandomCatsService";
 
 const RandomCats = () => {
@@ -21,6 +22,7 @@ const RandomCats = () => {
 
   return (
     <div>
+      <NavBar />
       <h1 className="title">Gatos HTTP</h1>
       <div className="pageContent">
         <div className="flex">
@@ -30,7 +32,9 @@ const RandomCats = () => {
             placeholder={"Digite um código..."}
             type={"number"}
           />
-          <Button onClick={handleSearchImage}>Gerar imagem</Button>
+          <Button onClick={handleSearchImage} variant={""} disabled={false}>
+            Gerar imagem
+          </Button>
         </div>
         <img
           src={catImage}

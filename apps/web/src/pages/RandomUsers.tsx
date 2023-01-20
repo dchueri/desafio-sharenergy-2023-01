@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Input from "../components/Elements/Input";
+import { NavBar } from "../components/NavBar";
 import RandomUsersTable from "../components/RandomUsers/RandomUsersTable";
 import { IUser } from "../interfaces/IUser";
 import { RandomUsersService } from "../utils/services/RandomUsersService";
@@ -44,7 +45,8 @@ const RandomUsers = () => {
   };
 
   return (
-    <div className="">
+    <div>
+      <NavBar />
       <h1 className="title">Lista de Usuários</h1>
       <div className="pageContent">
         <Input

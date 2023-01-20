@@ -99,10 +99,10 @@ export const ClientCreateModal = ({ closeModal }: any) => {
           </div>
         </div>
         <div className="mr-8 md:flex gap-3 self-end mb-6">
-          <Button onClick={() => {}} color={""} disabled={false}>
+          <Button onClick={() => {}} variant={""} disabled={false}>
             Adicionar
           </Button>
-          <Button onClick={closeModal} color="" disabled={false}>
+          <Button onClick={closeModal} variant="" disabled={false}>
             Cancelar
           </Button>
         </div>
