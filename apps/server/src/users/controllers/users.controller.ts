@@ -7,6 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from '../decorators/current-user.decorator';
 import { UserCreateDto } from '../dto/user-create.dto';
 import { UserUpdateDto } from '../dto/user-update.dto';
@@ -14,6 +15,8 @@ import UsernameAlreadyRegisteredException from '../exceptions/username-already-r
 import { User } from '../schema/user.schema';
 import { UserService } from '../services/user.service';
 
+@ApiBearerAuth('access-token')
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly userService: UserService) {}

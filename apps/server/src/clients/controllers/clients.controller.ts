@@ -9,12 +9,15 @@ import {
   Post,
   UseInterceptors,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ErrorsInterceptor } from 'src/errors/errors.interceptor';
 import { ClientCreateDto } from '../dto/client-create.dto';
 import { ClientUpdateDto } from '../dto/client-update.dto';
 import { Client } from '../schema/client.schema';
 import { ClientsService } from '../services/clients.service';
 
+@ApiBearerAuth('access-token')
+@ApiTags('clients')
 @UseInterceptors(ErrorsInterceptor)
 @Controller('clients')
 export class ClientsController {

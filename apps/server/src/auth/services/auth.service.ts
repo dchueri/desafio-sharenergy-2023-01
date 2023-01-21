@@ -4,7 +4,7 @@ import * as bcrypt from 'bcrypt';
 import { User } from 'src/users/schema/user.schema';
 import { UserService } from '../../users/services/user.service';
 import { UserPayload } from '../dto/user-payload.dto';
-import { UserToken } from '../dto/user-token-dto';
+import { UserToken } from '../dto/user-token.dto';
 import { IAuthService } from '../interfaces/auth-service.interface';
 
 @Injectable()

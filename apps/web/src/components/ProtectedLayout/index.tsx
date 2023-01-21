@@ -1,10 +1,31 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider/useAuth";
+import Button from "../Elements/Button";
 
 const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   if (!auth.username) {
-    return <h1 className="title">Faça o login</h1>;
+    return (
+      <div className="my-auto h-[100vh] flex flex-col justify-between">
+        <div className="pt-[20vh] text-center">
+          <h1 className="title h-auto">401</h1>
+          <h1 className="title h-auto">Não autorizado</h1>
+          <Button
+            onClick={() => navigate("/login")}
+            variant={""}
+            disabled={false}
+            className={"mt-[20px]"}
+          >
+            Login
+          </Button>
+        </div>
+        <div className="flex justify-center">
+          <img className="max-w-[20vw]" src="/erro.png" />
+        </div>
+      </div>
+    );
   }
   return children;
 };

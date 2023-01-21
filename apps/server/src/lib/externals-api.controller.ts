@@ -1,4 +1,5 @@
 import { Controller, Get, HttpCode, Param, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 import { CatImagesService } from './cat/cat-images.service';
 import { DogImagesService } from './dog/dog-images.service';
@@ -6,6 +7,8 @@ import { UserRandom } from './interfaces/user-random.interface';
 import { RandomUsersDto } from './random-users.dto';
 import { UsersRandomService } from './random-users/random-users.service';
 
+@ApiBearerAuth('access-token')
+@ApiTags('externals')
 @Controller('externals')
 export class ExternalsApiController {
   constructor(
