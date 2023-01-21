@@ -3,11 +3,17 @@
 
 ## Index
 
+* [Vídeo](#vídeo)
 * [Descrição](#descrição)
 * [Iniciando](#iniciando)
-	* [Preparando o ambiente](#preparando-ambiente)
+	* [Preparando o ambiente](#preparando-o-ambiente)
+* [Documentação](#documentação)
 * [Tecnologias](#tecnologias)
 * [Autor](#autor)
+
+## Vídeo
+Vídeo explicando a aplicação:
+[]()
 
 ## Descrição
 
@@ -38,6 +44,13 @@ Iniciando o front-end:
     cd desafio-sharenergy-2023-01/apps/web
     yarn
     yarn dev
+    
+## Documentação
+Acesse a documentação através do endpoint `/api` na rota do "server".
+
+Ex.:
+
+    localhost:3000/api
 
 ## Tecnologias
 
